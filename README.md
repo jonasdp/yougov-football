@@ -8,6 +8,7 @@ Personal goal is to treat the task as a "real" assignment but at the same time s
 
 Take the following gist in consideration:
 https://gist.github.com/joaofs/a6b80ce482de2f3846a00e72c0497a35
+
 This is a list of premier league football teams. This is the dataset to be used during this
 exercise. No actual database implementation is required, feel free to stub it out.
 
@@ -18,7 +19,7 @@ exercise. No actual database implementation is required, feel free to stub it ou
 4. On a different action, if a team already exists, /teams should update the image of the
    team.
 
-##Requirements
+## Requirements
 
 - Keep it simple
 - Low cost
@@ -26,11 +27,13 @@ exercise. No actual database implementation is required, feel free to stub it ou
 - Clarity / Good documentation
 - Quality
 
-##Architecture
+## Architecture
 
-The goal is to build the system using AWS and serverless technologies. One important factor is also to try to use the same computer languages and technologies that is currently used in the [YouGov Chat][https://www.yougov.chat(https://www.yougov.chat/)] application stack.
+The goal is to build the system using AWS and serverless technologies. One important factor is also to try to use the same computer languages and technologies that is currently used in the existing [YouGov Chat][] application stack.
 
-###Tech Stack
+![yougov](README.assets/yougov-football.png)
+
+### Tech Stack
 
 - **Terraform** to create the infrastructure.
 - Use **Typescript** for the lambdas.
@@ -40,18 +43,17 @@ The goal is to build the system using AWS and serverless technologies. One impor
 - **OpenAPI** as a template for constructing the **API Gateway**.
 - Use the **VUE** framework for the web client.
 
-###Trade offs:
+### Trade offs:
 
 - Using only one repository for the backend, frontend and infrastructure.
 - Run all tests and the deployment step locally.
 - Local Terraform states.
 - No security hardening.
-
-![yougov](README.assets/yougov-football.png)
+- Web client is public.
 
 ## Budget
 
-The table below show the budget for using the required services on AWS. The cost for using Route 53 as DNS is not included since the domain was already in use.
+The table below show the budget for the required services on AWS. The cost for using Route 53 as DNS is not included since the domain is already in use. This budget is based on less than 100.000 requests/month and no more than 0.1 GB of data storage.
 
 | Service     | Monthly Cost |
 | ----------- | ------------ |
@@ -62,4 +64,10 @@ The table below show the budget for using the required services on AWS. The cost
 | **Total**   | **$0.36**    |
 
 ## Runbook
+
+
+
+
+
+[YouGov Chat]: https://www.yougov.chat/
 
