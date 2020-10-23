@@ -1,0 +1,26 @@
+{
+  "name": "yougov-football",
+  "version": "1.0.0",
+  "description": "A test assignment from YouGov",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jonasdp/yougov-football.git"
+  },
+  "author": "Jonas Persson (jonasdp.freelance@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonasdp/yougov-football/issues"
+  },
+  "homepage": "https://github.com/jonasdp/yougov-football#readme",
+  "engines" : { 
+    "node" : ">=0.12" 
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}
