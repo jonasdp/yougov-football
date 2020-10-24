@@ -68,7 +68,21 @@ The table below show the budget for the required services on AWS. The cost for u
 
 ## Runbook
 
+### Configure AWS Lambda source
 
+1. run `npm init` in src directory
+2. 
+
+
+
+### Deploy Infrastructure
+
+1. Move to the relevant stage. (stage-jonas is the only one for now but it's easy to create new stages using the current stage as template)
+2. Initialize `terraform init ../src`
+3. Plan `terraform plan -out plan ../src`
+4. If all looks great apply `terraform apply plan`
+
+Any name is valid for the plan but "plan" is `.gitignored`.
 
 
 

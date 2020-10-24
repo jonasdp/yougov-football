@@ -1,0 +1,113 @@
+2020/10/24 22:39:00 [INFO] Terraform version: 0.12.25  
+2020/10/24 22:39:00 [INFO] Go runtime version: go1.12.13
+2020/10/24 22:39:00 [INFO] CLI args: []string{"C:\\ProgramData\\chocolatey\\lib\\terraform\\tools\\terraform.exe", "init", "../src"}
+2020/10/24 22:39:00 [DEBUG] Attempting to open CLI config file: C:\Users\jonas\AppData\Roaming\terraform.rc
+2020/10/24 22:39:00 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/10/24 22:39:00 [INFO] CLI command args: []string{"init", "../src"}
+2020/10/24 22:39:00 [WARN] Log levels other than TRACE are currently unreliable, and are supported only for backward compatibility.
+  Use TF_LOG=TRACE to see Terraform's internal logs.
+  ----
+2020/10/24 22:39:27 [INFO] Terraform version: 0.12.25  
+2020/10/24 22:39:27 [INFO] Go runtime version: go1.12.13
+2020/10/24 22:39:27 [INFO] CLI args: []string{"C:\\ProgramData\\chocolatey\\lib\\terraform\\tools\\terraform.exe", "init", "../src"}
+2020/10/24 22:39:27 [DEBUG] Attempting to open CLI config file: C:\Users\jonas\AppData\Roaming\terraform.rc
+2020/10/24 22:39:27 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/10/24 22:39:27 [INFO] CLI command args: []string{"init", "../src"}
+2020/10/24 22:39:27 [WARN] Log levels other than TRACE are currently unreliable, and are supported only for backward compatibility.
+  Use TF_LOG=TRACE to see Terraform's internal logs.
+  ----
+2020/10/24 22:39:27 [DEBUG] New state was assigned lineage "19fee9a3-077e-d2ff-d8d7-ba430dfa9aee"
+2020/10/24 22:39:27 [DEBUG] checking for provider in "."
+2020/10/24 22:39:27 [DEBUG] checking for provider in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 22:39:27 [DEBUG] checking for provisioner in "."
+2020/10/24 22:39:27 [DEBUG] checking for provisioner in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 22:39:27 [INFO] Failed to read plugin lock file .terraform\plugins\windows_amd64\lock.json: open .terraform\plugins\windows_amd64\lock.json: The system cannot find the path specified.
+2020/10/24 22:39:27 [DEBUG] checking for provider in "."
+2020/10/24 22:39:27 [DEBUG] checking for provider in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 22:39:27 [DEBUG] plugin requirements: "aws"=""
+2020/10/24 22:39:27 [DEBUG] plugin requirements: "api"=""
+2020/10/24 22:39:27 [WARN] Log levels other than TRACE are currently unreliable, and are supported only for backward compatibility.
+  Use TF_LOG=TRACE to see Terraform's internal logs.
+  ----
+2020/10/24 22:39:27 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+2020/10/24 22:39:27 [DEBUG] GET https://registry.terraform.io/v1/providers/-/aws/versions
+2020/10/24 22:39:27 [DEBUG] fetching provider versions from "https://registry.terraform.io/v1/providers/-/aws/versions"
+2020/10/24 22:39:28 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/aws/3.12.0/download/windows/amd64
+2020/10/24 22:39:28 [DEBUG] fetching provider location from "https://registry.terraform.io/v1/providers/hashicorp/aws/3.12.0/download/windows/amd64"
+2020/10/24 22:39:28 [DEBUG] verified GPG signature with key from HashiCorp Security <security@hashicorp.com>
+2020/10/24 22:39:28 [DEBUG] getting provider "aws" (hashicorp/aws) version "3.12.0"
+2020/10/24 22:39:28 [DEBUG] plugin cache is disabled, so downloading aws 3.12.0 from https://releases.hashicorp.com/terraform-provider-aws/3.12.0/terraform-provider-aws_3.12.0_windows_amd64.zip?checksum=sha256:0400f415121efad618d9ddca71522eb4d0958905e705daa6ecd9f7d8c1330253
+2020/10/24 22:40:24 [DEBUG] looking for the aws 3.12.0 plugin we just installed
+2020/10/24 22:40:24 [DEBUG] checking for provider in ".terraform\\plugins\\windows_amd64"
+2020/10/24 22:40:24 [DEBUG] found provider "terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 22:40:24 [DEBUG] all plugins found discovery.PluginMetaSet{discovery.PluginMeta{Name:"aws", Version:"3.12.0", Path:"C:\\Users\\jonas\\Development\\repos\\yougov-football\\infrastructure\\stage-jonas\\.terraform\\plugins\\windows_amd64\\terraform-provider-aws_v3.12.0_x5.exe"}:struct {}{}}
+2020/10/24 22:40:24 [DEBUG] GET https://registry.terraform.io/v1/providers/-/api/versions
+2020/10/24 22:40:24 [DEBUG] filtered plugins discovery.PluginMetaSet{discovery.PluginMeta{Name:"aws", Version:"3.12.0", Path:"C:\\Users\\jonas\\Development\\repos\\yougov-football\\infrastructure\\stage-jonas\\.terraform\\plugins\\windows_amd64\\terraform-provider-aws_v3.12.0_x5.exe"}:struct {}{}}
+2020/10/24 22:40:24 [DEBUG] fetching provider versions from "https://registry.terraform.io/v1/providers/-/api/versions"
+2020/10/24 22:40:24 [DEBUG] provider &{registry.terraform.io - api windows amd64} not found
+2020/10/24 23:23:31 [INFO] Terraform version: 0.12.25  
+2020/10/24 23:23:31 [INFO] Go runtime version: go1.12.13
+2020/10/24 23:23:31 [INFO] CLI args: []string{"C:\\ProgramData\\chocolatey\\lib\\terraform\\tools\\terraform.exe", "init", "../src"}
+2020/10/24 23:23:31 [DEBUG] Attempting to open CLI config file: C:\Users\jonas\AppData\Roaming\terraform.rc
+2020/10/24 23:23:31 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/10/24 23:23:31 [INFO] CLI command args: []string{"init", "../src"}
+2020/10/24 23:23:31 [WARN] Log levels other than TRACE are currently unreliable, and are supported only for backward compatibility.
+  Use TF_LOG=TRACE to see Terraform's internal logs.
+  ----
+2020/10/24 23:23:31 [DEBUG] New state was assigned lineage "34c3be0e-6f37-1340-4c37-41b21abc7352"
+2020/10/24 23:23:31 [DEBUG] checking for provider in "."
+2020/10/24 23:23:31 [DEBUG] checking for provider in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 23:23:31 [DEBUG] checking for provider in ".terraform\\plugins\\windows_amd64"
+2020/10/24 23:23:31 [DEBUG] found provider "terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 23:23:31 [DEBUG] found valid plugin: "aws", "3.12.0", "C:\\Users\\jonas\\Development\\repos\\yougov-football\\infrastructure\\stage-jonas\\.terraform\\plugins\\windows_amd64\\terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 23:23:31 [DEBUG] checking for provisioner in "."
+2020/10/24 23:23:31 [DEBUG] checking for provisioner in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 23:23:31 [DEBUG] checking for provisioner in ".terraform\\plugins\\windows_amd64"
+2020/10/24 23:23:31 [INFO] Failed to read plugin lock file .terraform\plugins\windows_amd64\lock.json: open .terraform\plugins\windows_amd64\lock.json: The system cannot find the file specified.
+2020/10/24 23:23:31 [DEBUG] checking for provider in "."
+2020/10/24 23:23:31 [DEBUG] checking for provider in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 23:23:31 [DEBUG] checking for provider in ".terraform\\plugins\\windows_amd64"
+2020/10/24 23:23:31 [DEBUG] found provider "terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 23:23:31 [DEBUG] found valid plugin: "aws", "3.12.0", "C:\\Users\\jonas\\Development\\repos\\yougov-football\\infrastructure\\stage-jonas\\.terraform\\plugins\\windows_amd64\\terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 23:23:31 [DEBUG] plugin requirements: "api"=""
+2020/10/24 23:23:31 [DEBUG] plugin requirements: "aws"=""
+2020/10/24 23:23:31 [WARN] Log levels other than TRACE are currently unreliable, and are supported only for backward compatibility.
+  Use TF_LOG=TRACE to see Terraform's internal logs.
+  ----
+2020/10/24 23:23:31 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+2020/10/24 23:23:32 [DEBUG] GET https://registry.terraform.io/v1/providers/-/api/versions
+2020/10/24 23:23:32 [DEBUG] fetching provider versions from "https://registry.terraform.io/v1/providers/-/api/versions"
+2020/10/24 23:23:32 [DEBUG] provider &{registry.terraform.io - api windows amd64} not found
+2020/10/24 23:24:22 [INFO] Terraform version: 0.12.25  
+2020/10/24 23:24:22 [INFO] Go runtime version: go1.12.13
+2020/10/24 23:24:22 [INFO] CLI args: []string{"C:\\ProgramData\\chocolatey\\lib\\terraform\\tools\\terraform.exe", "init", "../src"}
+2020/10/24 23:24:22 [DEBUG] Attempting to open CLI config file: C:\Users\jonas\AppData\Roaming\terraform.rc
+2020/10/24 23:24:22 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/10/24 23:24:22 [INFO] CLI command args: []string{"init", "../src"}
+2020/10/24 23:24:22 [WARN] Log levels other than TRACE are currently unreliable, and are supported only for backward compatibility.
+  Use TF_LOG=TRACE to see Terraform's internal logs.
+  ----
+2020/10/24 23:24:22 [DEBUG] New state was assigned lineage "4c5cc08a-7b22-378e-2d65-4ac566fa501f"
+2020/10/24 23:24:22 [DEBUG] checking for provider in "."
+2020/10/24 23:24:22 [DEBUG] checking for provider in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 23:24:22 [DEBUG] checking for provider in ".terraform\\plugins\\windows_amd64"
+2020/10/24 23:24:22 [DEBUG] found provider "terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 23:24:22 [DEBUG] found valid plugin: "aws", "3.12.0", "C:\\Users\\jonas\\Development\\repos\\yougov-football\\infrastructure\\stage-jonas\\.terraform\\plugins\\windows_amd64\\terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 23:24:22 [DEBUG] checking for provisioner in "."
+2020/10/24 23:24:22 [DEBUG] checking for provisioner in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 23:24:22 [DEBUG] checking for provisioner in ".terraform\\plugins\\windows_amd64"
+2020/10/24 23:24:22 [INFO] Failed to read plugin lock file .terraform\plugins\windows_amd64\lock.json: open .terraform\plugins\windows_amd64\lock.json: The system cannot find the file specified.
+2020/10/24 23:24:22 [DEBUG] checking for provider in "."
+2020/10/24 23:24:22 [DEBUG] checking for provider in "C:\\ProgramData\\chocolatey\\lib\\terraform\\tools"
+2020/10/24 23:24:22 [DEBUG] checking for provider in ".terraform\\plugins\\windows_amd64"
+2020/10/24 23:24:22 [DEBUG] found provider "terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 23:24:22 [DEBUG] found valid plugin: "aws", "3.12.0", "C:\\Users\\jonas\\Development\\repos\\yougov-football\\infrastructure\\stage-jonas\\.terraform\\plugins\\windows_amd64\\terraform-provider-aws_v3.12.0_x5.exe"
+2020/10/24 23:24:22 [DEBUG] plugin requirements: "api"=""
+2020/10/24 23:24:22 [DEBUG] plugin requirements: "aws"=""
+2020/10/24 23:24:22 [WARN] Log levels other than TRACE are currently unreliable, and are supported only for backward compatibility.
+  Use TF_LOG=TRACE to see Terraform's internal logs.
+  ----
+2020/10/24 23:24:22 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+2020/10/24 23:24:23 [DEBUG] GET https://registry.terraform.io/v1/providers/-/api/versions
+2020/10/24 23:24:23 [DEBUG] fetching provider versions from "https://registry.terraform.io/v1/providers/-/api/versions"
+2020/10/24 23:24:23 [DEBUG] provider &{registry.terraform.io - api windows amd64} not found

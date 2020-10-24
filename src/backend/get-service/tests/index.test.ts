@@ -1,5 +1,5 @@
 import { getTeam } from '../src/index';
-import { Callback, Context } from 'aws-lambda';
+import { Callback, Context, APIGatewayProxyEvent } from 'aws-lambda';
 import { mocked } from 'ts-jest/utils';
 
 let str: string;
@@ -12,6 +12,19 @@ let bool: boolean;
 const context = {
   awsRequestId: 'id'
 }
+
+const event: APIGatewayProxyEvent = {
+  body: '',
+  headers: {},
+  httpMethod: 'GET',
+  isBase64Encoded: false,
+  path: '',
+  pathParameters: {},
+  queryStringParameters: [name: ''],
+  stageVariables: {},
+  requestContext: {},
+  resource: '' 
+};
 
 let callback: Callback;
 
