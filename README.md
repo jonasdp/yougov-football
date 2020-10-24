@@ -37,11 +37,12 @@ The goal is to build the system using AWS and serverless technologies. One impor
 
 - **Terraform** to create the infrastructure.
 - Use **Typescript** for the lambdas.
+- **Jest** for the unit tests.
 - **S3** as database for the JSON data.
 - The web client use **S3** as a "web server".
 - **Route 53** to serve both the web client and the API in order to be able to use a specific domain name.
 - **OpenAPI** as a template for constructing the **API Gateway**.
-- Use the **VUE** framework for the web client.
+- Use the **Vue** framework for the web client.
 
 ### Trade offs:
 
@@ -50,6 +51,8 @@ The goal is to build the system using AWS and serverless technologies. One impor
 - Local Terraform states.
 - No security hardening.
 - Web client is public.
+- Not using X-Ray.
+- No lint for the source code.
 
 ## Budget
 
