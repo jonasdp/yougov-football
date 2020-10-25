@@ -4,6 +4,7 @@
   "description": "A service in the yougov-football application that fetch data from S3",
   "main": "hanler.js",
   "scripts": {
+    "start": "./node_modules/.bin/ts-node ./yougov-football-service.ts",
     "test": "npx jest",
     "coverage": "npx jest --coverage",
     "clean": "rm -rf dist",
@@ -25,7 +26,6 @@
   },
   "arch": "any",
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.64",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.2",
     "aws-sdk": "^2.778.0",
