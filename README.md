@@ -58,13 +58,14 @@ The goal is to build the system using AWS and serverless technologies. One impor
 
 The table below show the budget for the required services on AWS. The cost for using Route 53 as DNS is not included since the domain is already in use. This budget is based on less than 100.000 requests/month and no more than 0.1 GB of data storage.
 
-| Service     | Monthly Cost |
-| ----------- | ------------ |
-| Lambda      | $0.00        |
-| S3          | $0.01        |
-| API Gateway | $0.35        |
-| Route 53    | $0.00        |
-| **Total**   | **$0.36**    |
+| Service (1000 req/month) | Monthly Cost                     |
+| ------------------------ | -------------------------------- |
+| Lambda                   | $0.00                            |
+| S3                       | $0.001                           |
+| API Gateway              | $0.0035                          |
+| DynamoDB                 | $1.6965                          |
+| Route 53                 | $0.00                            |
+| **Total**                | **$1.36**XXX ($0 with free tier) |
 
 ## Runbook
 

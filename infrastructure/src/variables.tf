@@ -56,3 +56,19 @@ variable "api_template_vars" {
   description = "Variables required in the OpenAPI template file"
   type        = map
 }
+
+variable "table_name" {
+  description = "DynamoDB name"
+}
+
+variable "table_read_capacity" {
+  description = "DynamoDB read cap."
+}
+
+variable "table_write_capacity" {
+  description = "DynamoDB write cap."
+}
+
+variable "table_key" {
+  description = "DynamoDB hash key"
+}
