@@ -1,10 +1,49 @@
 import AWS from 'aws-sdk';
+import './string.extensions'
 
-import {APIGatewayResponse} from './lib/api-gateway-response';
-import {APIGatewayEvent} from './lib/api-gateway-event';
-import {IFootballTeam} from './lib/IFootballTeam';
+export interface IAPIGatewayEvent {
+  body: string | '';
+  httpMethod: string;
+  pathParameters: { [name: string]: string } | null;
+}
 
-export async function YougovFootballHandler(event: APIGatewayEvent): Promise<APIGatewayResponse> {
+export interface IAPIGatewayResponse {
+  statusCode: number;
+  body: string;
+}
+
+export interface IFootballTeam {
+  name: string;
+  img?: string;
+}
+
+export class FootballTeam {
+  private _name: string;
+  private _img: string;
+
+  constructor(name: string, img: string = '') {
+    this._name = name;
+    this._img = img;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  set name(name: string) {
+    this._name = name;
+  }
+
+  get img(): string {
+    return this._img;
+  }
+
+  set img(img: string) {
+    this._img = img;
+  }
+}
+
+export async function YougovFootballHandler(event: IAPIGatewayEvent): Promise<IAPIGatewayResponse> {
   const dynamodb = new AWS.DynamoDB.DocumentClient();
 
   console.log('Received event:', JSON.stringify(event, null, 2));
@@ -14,67 +53,67 @@ export async function YougovFootballHandler(event: APIGatewayEvent): Promise<API
   let teamName: string;
 
   let footballTeam: IFootballTeam = {
-    name: '',
-    img: ''
+    name: ''
   }
 
-  let response: APIGatewayResponse = {
+  let response: IAPIGatewayResponse = {
     statusCode: 200,
     body: ''
   }
 
-  if(event.body){
-    let body = JSON.parse(event.body);
-    footballTeam.name = body.name;
-    footballTeam.img = body.img;
-  }
-  
   try {
-      switch (event.httpMethod) {
-          case 'GET':
-              if (event.pathParameters && event.pathParameters.name) {
-                  teamName= event.pathParameters.name;
+    switch (event.httpMethod) {
+      case 'GET':
+        if (event.pathParameters && event.pathParameters.name) {
+          teamName = event.pathParameters.name;
 
-                  const params = {
-                    TableName: tableName,
-                    Key: {
-                        name: teamName
-                    }
-                  }
+          const getParams = {
+            TableName: tableName,
+            Key: {
+              name: teamName
+            }
+          }
 
-                  const result = await dynamodb.get(params).promise();
+          const result = await dynamodb.get(getParams).promise();
 
-                  response.body = JSON.stringify(result);
-              }
-              else {
-                  const params = {
-                      TableName: tableName
-                  }
-                  const result = await dynamodb.scan(params).promise();
+          response.body = JSON.stringify(result);
+        }
+        else {
+          const getParams = {
+            TableName: tableName
+          }
+          const result = await dynamodb.scan(getParams).promise();
 
-                  response.body = JSON.stringify(result.Items);
-              }
+          response.body = JSON.stringify(result.Items);
+        }
 
-              break;
-          case 'POST':
-                  const params = {
-                      TableName: tableName,
-                      Item: {
-                          name: footballTeam.name,
-                          img: footballTeam.img
-                      }
-                  }
-                  const result = await dynamodb.put(params).promise();
+        break;
+      case 'POST':
+        if (event.body) {
+          let body = JSON.parse(event.body);
+          const team = new FootballTeam(body.name.trim(), body.img.trim());
 
-                  response.body = JSON.stringify(result);
-              break;
-          default:
-              throw new Error(`Unsupported method "${event.httpMethod}"`);
-      }
+          const putParams = {
+            TableName: tableName,
+            Item: {
+              name: team.name,
+              img: team.img,
+            }
+          }
+          const result = await dynamodb.put(putParams).promise();
+
+          response.body = JSON.stringify(result);
+        } else {
+          throw new Error(`Body missing"`);
+        }
+        break;
+      default:
+        throw new Error(`Unsupported method "${event.httpMethod}"`);
+    }
   }
   catch (err) {
-      response.statusCode = 400;
-      response.body = err.message;
+    response.statusCode = 400;
+    response.body = err.message;
   }
   finally {
     response.body = JSON.stringify(response.body);
