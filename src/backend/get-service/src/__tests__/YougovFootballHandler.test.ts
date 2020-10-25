@@ -2,7 +2,6 @@ import { YougovFootballHandler } from '../yougov-football-handler';
 import { mocked } from 'ts-jest/utils';
 
 const listEvent = {
-  body: null,
   httpMethod: 'GET',
   pathParameters: null
 }

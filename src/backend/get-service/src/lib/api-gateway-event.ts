@@ -1,5 +1,5 @@
 export interface APIGatewayEvent {
-  body: string;
+  body?: string;
   httpMethod: string;
   pathParameters: { [name: string]: string } | null;
 }

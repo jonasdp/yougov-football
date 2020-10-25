@@ -1,4 +1,4 @@
 export interface APIGatewayResponse {
   statusCode: number;
-  body: any;
+  body: string;
 }
