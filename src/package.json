@@ -1,13 +1,13 @@
 {
   "name": "get-service",
   "version": "1.0.0",
-  "description": "A service in the yougov-football application that fetch data from S3",
+  "description": "The lambda for the yougov-football application",
   "main": "hanler.js",
   "scripts": {
-    "start": "./node_modules/.bin/ts-node ./yougov-football-service.ts",
+    "start": "./node_modules/.bin/ts-node ./handler.ts",
     "test": "npx jest",
     "coverage": "npx jest --coverage",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf ../dist",
     "prebuild": "npm run clean",
     "build": "tsc"
   },

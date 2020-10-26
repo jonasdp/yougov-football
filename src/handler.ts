@@ -1,23 +1,22 @@
 import AWS from 'aws-sdk';
-import './string.extensions'
 
-export interface IAPIGatewayEvent {
+interface IAPIGatewayEvent {
   body: string | '';
   httpMethod: string;
   pathParameters: { [name: string]: string } | null;
 }
 
-export interface IAPIGatewayResponse {
+interface IAPIGatewayResponse {
   statusCode: number;
   body: string;
 }
 
-export interface IFootballTeam {
+interface IFootballTeam {
   name: string;
   img?: string;
 }
 
-export class FootballTeam {
+ class FootballTeam {
   private _name: string;
   private _img: string;
 
@@ -43,18 +42,12 @@ export class FootballTeam {
   }
 }
 
-export async function YougovFootballHandler(event: IAPIGatewayEvent): Promise<IAPIGatewayResponse> {
-  const dynamodb = new AWS.DynamoDB.DocumentClient();
-
+export async function handler (event: IAPIGatewayEvent): Promise<IAPIGatewayResponse> {
+  
   console.log('Received event:', JSON.stringify(event, null, 2));
-
+  
+  const dynamodb = new AWS.DynamoDB.DocumentClient();
   const tableName = "yougovFootballTeams";
-
-  let teamName: string;
-
-  let footballTeam: IFootballTeam = {
-    name: ''
-  }
 
   let response: IAPIGatewayResponse = {
     statusCode: 200,
@@ -65,7 +58,7 @@ export async function YougovFootballHandler(event: IAPIGatewayEvent): Promise<IA
     switch (event.httpMethod) {
       case 'GET':
         if (event.pathParameters && event.pathParameters.name) {
-          teamName = event.pathParameters.name;
+          const teamName: string = event.pathParameters.name;
 
           const getParams = {
             TableName: tableName,

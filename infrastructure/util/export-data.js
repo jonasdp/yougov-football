@@ -3,8 +3,7 @@
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
-
-const fileName = '../../infrastructure/data/yougov-football-data.json';
+const fileName = '../data/yougov-football-data.json';
 
 const credentials = new AWS.SharedIniFileCredentials({profile: 'jonasdp-aws-main--jonas'});
 

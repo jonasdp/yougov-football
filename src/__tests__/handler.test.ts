@@ -1,4 +1,4 @@
-import { YougovFootballHandler } from '../yougov-football-handler';
+import { handler  } from '../handler';
 import { mocked } from 'ts-jest/utils';
 
 const listEvent = {
@@ -8,7 +8,7 @@ const listEvent = {
 }
 describe('Yougov Tests', function () {
   it('Get all teams', async () => {
-    const result = await YougovFootballHandler(listEvent);
+    const result = await handler (listEvent);
     expect(result).toBe({
       statusCode: 200,
       body: {
