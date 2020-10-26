@@ -1,5 +1,6 @@
-import AWS from 'aws-sdk'
-AWS.config.update({ region: 'eu-west-1' })
+//import AWS from 'aws-sdk'
+//AWS.config.update({ region: 'eu-west-1' })
+//import { DynamoDB } from 'aws-sdk'
 
 interface IAPIGatewayEvent {
   body: string | ''
@@ -46,8 +47,11 @@ class FootballTeam {
 export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayResponse> {
   console.log('Received event:', JSON.stringify(event, null, 2))
 
-  const dynamoDb = AWS.DynamoDB
-  const dynamoClient = new dynamoDb.DocumentClient()
+  //const dynamoDb = AWS.DynamoDB
+  //const dynamoClient = new dynamoDb.DocumentClient()
+  const AWS = require('aws-sdk')
+  AWS.config.update({ region: 'eu-west-1' })
+  const dynamoClient = new AWS.DynamoDB.DocumentClient()
 
   const tableName = process.env.TABLE_NAME || 'yougovFootballTeams'
 
