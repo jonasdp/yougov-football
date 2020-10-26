@@ -47,7 +47,7 @@ export async function handler (event: IAPIGatewayEvent): Promise<IAPIGatewayResp
   console.log('Received event:', JSON.stringify(event, null, 2));
   
   const dynamodb = new AWS.DynamoDB.DocumentClient();
-  const tableName = "yougovFootballTeams";
+  const tableName = process.env.TABLE_NAME || '';
 
   let response: IAPIGatewayResponse = {
     statusCode: 200,

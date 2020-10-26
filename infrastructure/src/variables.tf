@@ -72,3 +72,11 @@ variable "table_write_capacity" {
 variable "table_key" {
   description = "DynamoDB hash key"
 }
+
+variable "lambda_path" {
+  description = "Path to built lambda"
+}
+
+variable "lambda_runtime" {
+  description = "Runtime and version for lambda"
+}

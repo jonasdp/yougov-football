@@ -3,7 +3,7 @@
 # }
 
 output "api_id" {
-  value = aws_api_gateway_rest_api.api_rest.id
+  value = aws_api_gateway_rest_api.rest_api.id
 }
 
 output "api_name" {

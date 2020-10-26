@@ -2,14 +2,15 @@
   "name": "get-service",
   "version": "1.0.0",
   "description": "The lambda for the yougov-football application",
-  "main": "hanler.js",
+  "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/ts-node ./handler.ts",
+    "start": "./node_modules/.bin/ts-node ./index.ts",
     "test": "npx jest",
     "coverage": "npx jest --coverage",
     "clean": "rm -rf ../dist",
     "prebuild": "npm run clean",
-    "build": "tsc"
+    "build": "tsc",
+    "postbuild": "zip ../dist/index.js ../dist/index.zip"
   },
   "repository": {
     "type": "git",

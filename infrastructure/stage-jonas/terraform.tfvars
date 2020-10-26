@@ -33,3 +33,7 @@ table_read_capacity = 1
 table_write_capacity = 1
 
 table_key = "name"
+
+lambda_path = "../../dist/index.zip"
+
+lambda_runtime = "nodejs12.x"
