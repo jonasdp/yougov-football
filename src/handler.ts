@@ -1,4 +1,5 @@
-import AWS from 'aws-sdk';
+//import AWS from 'aws-sdk';
+var AWS = require('aws-sdk');
 
 interface IAPIGatewayEvent {
   body: string | '';
