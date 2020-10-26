@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk'
+AWS.config.update({ region: 'eu-west-1' })
 
 interface IAPIGatewayEvent {
   body: string | ''
@@ -45,8 +46,10 @@ class FootballTeam {
 export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayResponse> {
   console.log('Received event:', JSON.stringify(event, null, 2))
 
-  const dynamodb = new AWS.DynamoDB.DocumentClient()
-  const tableName = process.env.TABLE_NAME || ''
+  const dynamoDb = AWS.DynamoDB
+  const dynamoClient = new dynamoDb.DocumentClient()
+
+  const tableName = process.env.TABLE_NAME || 'yougovFootballTeams'
 
   let response: IAPIGatewayResponse = {
     statusCode: 200,
@@ -66,14 +69,14 @@ export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayRespo
             }
           }
 
-          const result = await dynamodb.get(getParams).promise()
+          const result = await dynamoClient.get(getParams).promise()
 
           response.body = JSON.stringify(result)
         } else {
           const getParams = {
             TableName: tableName
           }
-          const result = await dynamodb.scan(getParams).promise()
+          const result = await dynamoClient.scan(getParams).promise()
 
           response.body = JSON.stringify(result.Items)
         }
@@ -91,7 +94,7 @@ export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayRespo
               img: team.img
             }
           }
-          const result = await dynamodb.put(putParams).promise()
+          const result = await dynamoClient.put(putParams).promise()
 
           response.body = JSON.stringify(result)
         } else {
