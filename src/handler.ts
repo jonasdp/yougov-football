@@ -1,11 +1,12 @@
 //import AWS from 'aws-sdk'
 //AWS.config.update({ region: 'eu-west-1' })
 //import { DynamoDB } from 'aws-sdk'
+export const AWS = require('aws-sdk')
 
 interface IAPIGatewayEvent {
-  body: string | ''
+  body?: string
   httpMethod: string
-  pathParameters: { [name: string]: string } | null
+  pathParameters?: { [name: string]: string }
 }
 
 interface IAPIGatewayResponse {
@@ -49,11 +50,11 @@ export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayRespo
 
   //const dynamoDb = AWS.DynamoDB
   //const dynamoClient = new dynamoDb.DocumentClient()
-  const AWS = require('aws-sdk')
-  AWS.config.update({ region: 'eu-west-1' })
+
+  //AWS.config.update({ region: 'eu-west-1' })
   const dynamoClient = new AWS.DynamoDB.DocumentClient()
 
-  const tableName = process.env.TABLE_NAME || 'yougovFootballTeams'
+  const tableName = process.env.TABLE_NAME || ''
 
   let response: IAPIGatewayResponse = {
     statusCode: 200,
@@ -75,14 +76,15 @@ export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayRespo
 
           const result = await dynamoClient.get(getParams).promise()
 
-          response.body = JSON.stringify(result)
+          response.body = result
         } else {
           const getParams = {
-            TableName: tableName
+            TableName: tableName,
+            Key: {}
           }
           const result = await dynamoClient.scan(getParams).promise()
 
-          response.body = JSON.stringify(result.Items)
+          response.body = result.Items
         }
 
         break
@@ -99,8 +101,6 @@ export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayRespo
             }
           }
           const result = await dynamoClient.put(putParams).promise()
-
-          response.body = JSON.stringify(result)
         } else {
           throw new Error(`Body missing"`)
         }
