@@ -31,61 +31,83 @@ exercise. No actual database implementation is required, feel free to stub it ou
 
 The goal is to build the system using AWS and serverless technologies. One important factor is also to try to use the same computer languages and technologies that is currently used in the existing [YouGov Chat][] application stack.
 
-![yougov](README.assets/yougov-football.png)
+![](README.assets/yougov-football-flow-3d.png)
 
 ### Tech Stack
 
-- **Terraform** to create the infrastructure.
-- Use **Typescript** for the lambdas.
-- **Jest** for the unit tests.
-- **S3** as database for the JSON data.
-- The web client use **S3** as a "web server".
-- **Route 53** to serve both the web client and the API in order to be able to use a specific domain name.
-- **OpenAPI** as a template for constructing the **API Gateway**.
-- Use the **Vue** framework for the web client.
+- [Terraform][] to create all the infrastructure.
+- Use [Typescript][] for the lambdas.
+- [Jest][] for the unit tests.
+- [DynamoDB][] as database for the JSON data.
+- ([OpenAPI][] as a template for constructing the [API Gateway][].)
 
 ### Trade offs:
 
-- Using only one repository for the backend, frontend and infrastructure.
+- Using only one repository for the backend and infrastructure.
 - Run all tests and the deployment step locally.
 - Local Terraform states.
 - No security hardening.
-- Web client is public.
+- API is public
 - Not using X-Ray.
-- No lint for the source code.
 
 ## Budget
 
 The table below show the budget for the required services on AWS. The cost for using Route 53 as DNS is not included since the domain is already in use. This budget is based on less than 100.000 requests/month and no more than 0.1 GB of data storage.
 
-| Service (1000 req/month) | Monthly Cost                     |
-| ------------------------ | -------------------------------- |
-| Lambda                   | $0.00                            |
-| S3                       | $0.001                           |
-| API Gateway              | $0.0035                          |
-| DynamoDB                 | $1.6965                          |
-| Route 53                 | $0.00                            |
-| **Total**                | **$1.36**XXX ($0 with free tier) |
+| Service (1000 req/month) | Monthly Cost                  |
+| ------------------------ | ----------------------------- |
+| Lambda                   | $0.00                         |
+| API Gateway              | $0.0035                       |
+| DynamoDB                 | $1.6965                       |
+| Route 53                 | $0.00                         |
+| **Total**                | **$1.70** ($0 with free tier) |
+
+
 
 ## Runbook
 
 ### Configure AWS Lambda source
 
 1. run `npm init` in src directory
-2. 
-
-
+2. `npm run test` for unit tests
+3. In order to deploy run `npm run build`
 
 ### Deploy Infrastructure
 
-1. Move to the relevant stage. (stage-jonas is the only one for now but it's easy to create new stages using the current stage as template)
+1. Move to the relevant **stage folder**. (The only existing stage environment is *stage-jonas* but it's easy to create new stages using the current stage as a template)
 2. Initialize `terraform init ../src`
 3. Plan `terraform plan -out plan ../src`
 4. If all looks great apply `terraform apply plan`
 
-Any name is valid for the plan but "plan" is `.gitignored`.
+Any name is valid for the plan but "plan" is `.gitignored`
+
+Infrastructure **not** created by terraform:
+
+- The ACM certificate used for the domain since there already was one present.
+- The parent domain *codeautomata.com* since it was already configured in Route 53.
+
+### API
+
+The application uses REST calls to get and create football teams.
+
+Some tools you can use is **Curl** or **Postman**.
+
+| Resource        | Method | Description                                                  |      |
+| --------------- | ------ | ------------------------------------------------------------ | ---- |
+| /teams          | GET    | All teams will be returned                                   |      |
+| /teams          | POST   | A new team will be updated except if the name already exist then it will update the image on the existing team. |      |
+| /teams/`{name}` | GET    | Will return the team that is found using the `{name}` path parameter.  Some values to try are `Liverpool`, `Arsenal` and `Manchester%20United`. The `{name}` parameter must be in a **URL encoded** format. |      |
+
+### Online Test Environment
+
+The application can be tested on: [https://api.yougov.codeautomata.com/](https://api.yougov.codeautomata.com/)
 
 
 
 [YouGov Chat]: https://www.yougov.chat/
-
+[Jest]: https://jestjs.io
+[Terraform]: https://www.terraform.io
+[OpenAPI]: https://www.openapis.org
+[Typescript]: https://www.typescriptlang.org
+[DynamoDB]: https://aws.amazon.com/dynamodb/
+[API Gateway]: https://aws.amazon.com/api-gateway/

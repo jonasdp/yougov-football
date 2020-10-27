@@ -9,8 +9,7 @@
     "coverage": "npx jest --coverage",
     "clean": "rm -rf ../dist",
     "prebuild": "npm run clean",
-    "build": "tsc",
-    "postbuild": "zip ../dist/index.js ../dist/index.zip"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

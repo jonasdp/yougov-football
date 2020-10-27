@@ -1,7 +1,7 @@
 import jestConfig from '../jest.config'
 import AWSMock from 'aws-sdk-mock'
 //import AWS from 'aws-sdk'
-import { AWS, handler } from '../handler'
+import { AWS, handler } from '..'
 import { GetItemInput } from 'aws-sdk/clients/dynamodb'
 
 const getDynamoResponse = {
@@ -25,6 +25,7 @@ const scanDynamoResponse = {
     }
   ]
 }
+
 beforeAll(async (done) => {
   //handler requires env vars
   done()
@@ -91,24 +92,46 @@ describe('Yougov Tests', () => {
   it('Create team', async () => {
     AWSMock.setSDKInstance(AWS)
     // Overwriting DynamoDB.DocumentClient.get()
-    AWSMock.mock('DynamoDB.DocumentClient', 'get', (params: GetItemInput, callback: Function) => {
-      console.log('DynamoDB.DocumentClient', 'get', 'mock called')
+    AWSMock.mock('DynamoDB.DocumentClient', 'put', (params: GetItemInput, callback: Function) => {
+      console.log('DynamoDB.DocumentClient', 'put', 'mock called')
       callback(null, getDynamoResponse)
     })
 
     const event = {
       httpMethod: 'POST',
-      pathParameters: {
-        name: 'Liverpool'
-      }
+      body: JSON.stringify({
+        name: 'Liverpool',
+        img: 'IMAGE'
+      })
     }
 
     const response = await handler(event)
 
-    expect(JSON.parse(response.body)).toEqual({
-      name: 'Liverpool',
-      img: 'https://s3-eu-west-1.amazonaws.com/inconbucket/images/entities/original/646.jpg'
-    })
+    expect(response.statusCode).toEqual(200)
+
+    AWSMock.restore('DynamoDB.DocumentClient')
+  })
+
+  it('Invalid httpmethod', async () => {
+    const event = {
+      httpMethod: 'PUT'
+    }
+
+    const response = await handler(event)
+
+    expect(response.statusCode).toEqual(400)
+
+    AWSMock.restore('DynamoDB.DocumentClient')
+  })
+
+  it('Invalid POST request', async () => {
+    const event = {
+      httpMethod: 'POST'
+    }
+
+    const response = await handler(event)
+
+    expect(response.statusCode).toEqual(400)
 
     AWSMock.restore('DynamoDB.DocumentClient')
   })

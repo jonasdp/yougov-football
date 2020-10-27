@@ -6,17 +6,12 @@ export const AWS = require('aws-sdk')
 interface IAPIGatewayEvent {
   body?: string
   httpMethod: string
-  pathParameters?: { [name: string]: string }
+  pathParameters?: { [key: string]: string }
 }
 
 interface IAPIGatewayResponse {
   statusCode: number
   body: string
-}
-
-interface IFootballTeam {
-  name: string
-  img?: string
 }
 
 class FootballTeam {
@@ -64,8 +59,8 @@ export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayRespo
   try {
     switch (event.httpMethod) {
       case 'GET':
-        if (event.pathParameters && event.pathParameters.name) {
-          const teamName: string = event.pathParameters.name
+        if (event.pathParameters != undefined && event.pathParameters.name != undefined) {
+          const teamName: string = decodeURI(event.pathParameters.name)
 
           const getParams = {
             TableName: tableName,
@@ -89,8 +84,8 @@ export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayRespo
 
         break
       case 'POST':
-        if (event.body) {
-          let body = JSON.parse(event.body)
+        if (event.body != undefined) {
+          const body = JSON.parse(event.body)
           const team = new FootballTeam(body.name.trim(), body.img.trim())
 
           const putParams = {
@@ -100,7 +95,7 @@ export async function handler(event: IAPIGatewayEvent): Promise<IAPIGatewayRespo
               img: team.img
             }
           }
-          const result = await dynamoClient.put(putParams).promise()
+          await dynamoClient.put(putParams).promise()
         } else {
           throw new Error(`Body missing"`)
         }
