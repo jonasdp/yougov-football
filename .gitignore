@@ -35,9 +35,6 @@ override.tf.json
 # Local npm directory
 **/npm/*
 
-# Local js files
-**/src/*.js
-
 # Local zip files
 **/src/*.zip
 
